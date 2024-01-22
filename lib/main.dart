@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/pages/home_page.dart';
+import 'package:rick_and_morty/utils/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rick And Morty',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: CharacterTheme.dark,
       home: const HomePage(),
     );
   }
