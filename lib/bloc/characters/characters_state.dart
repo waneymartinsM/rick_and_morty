@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+part of 'characters_bloc.dart';
 
+@immutable
 abstract class CharactersState extends Equatable {}
 
 class InitialState extends CharactersState {
@@ -23,6 +23,10 @@ class SuccessState extends CharactersState {
 }
 
 class ErrorState extends CharactersState {
+  final String error;
+
+  ErrorState(this.error);
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [error];
 }
