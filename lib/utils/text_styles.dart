@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class CharacterTextStyle {
   static const characterName = TextStyle(
     fontWeight: FontWeight.bold,
-    fontSize: 20,
+    fontSize: 18,
     color: Colors.white,
   );
 

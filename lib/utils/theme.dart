@@ -12,7 +12,7 @@ abstract class CharacterTheme{
       elevation: 0,
       titleTextStyle: TextStyle(
         color: AppColors.green,
-        fontSize: 28,
+        fontSize: 22,
         fontFamily: 'Poppins',
         fontWeight: FontWeight.w700,
       ),
