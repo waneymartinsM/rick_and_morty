@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
 import 'package:rick_and_morty/models/character_model.dart';
 import 'package:rick_and_morty/utils/colors.dart';
+import 'package:rick_and_morty/utils/text_styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<CharacterModel> _character = [];
+  final List<CharacterModel> character = [];
   late ScrollController _scrollController;
 
   @override
@@ -48,15 +49,15 @@ class _HomePageState extends State<HomePage> {
           return BlocBuilder<CharactersBloc, CharactersState>(
             builder: (context, state) {
               if (state is InitialState ||
-                  state is LoadingState && _character.isEmpty) {
+                  state is LoadingState && character.isEmpty) {
                 return const Center(
                     child: CircularProgressIndicator(color: AppColors.green));
-              } else if (state is ErrorState && _character.isEmpty) {
+              } else if (state is ErrorState && character.isEmpty) {
                 return const Center(
                     child:
                         Icon(Icons.warning_amber_outlined, color: Colors.red));
               } else if (state is SuccessState) {
-                _character.addAll(state.characters);
+                character.addAll(state.characters);
               }
               return ListView.separated(
                 separatorBuilder: (context, index) => const SizedBox(height: 5),
@@ -69,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                           .add(LoadingCharactersEvent());
                     }
                   }),
-                itemCount: _character.length,
+                itemCount: character.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding:
@@ -81,9 +82,40 @@ class _HomePageState extends State<HomePage> {
                         color: AppColors.body1,
                         child: Row(
                           children: [
-                            Image.network(_character[index].image,
+                            Image.network(character[index].image,
                                 filterQuality: FilterQuality.high),
-                            Text(_character[index].name),
+                            Expanded(
+                              child: ListTile(
+                                title: Text(
+                                  character[index].name,
+                                  style: CharacterTextStyle.characterName,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                subtitle: Row(
+                                  children: [
+                                    Container(
+                                      height: 10,
+                                      width: 10,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: character[index].status ==
+                                                'Alive'
+                                            ? Colors.green
+                                            : character[index].status == 'Dead'
+                                                ? Colors.red
+                                                : Colors.grey,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text(
+                                      "${character[index].status} - ${character[index].species}",
+                                      style: CharacterTextStyle.characterStatus,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
