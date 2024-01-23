@@ -22,6 +22,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -53,8 +59,7 @@ class _HomePageState extends State<HomePage> {
                 _character.addAll(state.characters);
               }
               return ListView.separated(
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
+                separatorBuilder: (context, index) => const SizedBox(height: 5),
                 controller: _scrollController
                   ..addListener(() async {
                     if (_scrollController.position.pixels ==
@@ -66,7 +71,11 @@ class _HomePageState extends State<HomePage> {
                   }),
                 itemCount: _character.length,
                 itemBuilder: (context, index) {
-                  return Text("${index.toString()} ${_character[index].name}");
+                  return ListTile(
+                    title: Text(_character[index].name),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  );
                 },
               );
             },
