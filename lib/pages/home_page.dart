@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
 import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/pages/character_detail_page.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 import 'package:rick_and_morty/utils/text_styles.dart';
 
@@ -95,48 +96,55 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: Container(
-          height: 100,
-          width: double.infinity,
-          color: AppColors.body1,
-          child: Row(
-            children: [
-              Image.network(character.image, fit: BoxFit.cover),
-              const SizedBox(width: 25),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Material(
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          CharacterDetailPage(character: character)));
+            },
+            splashColor: AppColors.body1.withOpacity(0.1),
+            child: Ink(
+              height: 100,
+              width: double.infinity,
+              color: AppColors.body1,
+              child: Row(
                 children: [
-                  Text(
-                    character.name,
-                    style: CharacterTextStyle.characterName,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
+                  Image.network(character.image, fit: BoxFit.cover),
+                  const SizedBox(width: 25),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 10,
-                        width: 10,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: character.status == 'Alive'
-                              ? Colors.green
-                              : character.status == 'Dead'
-                                  ? Colors.red
-                                  : Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(width: 5),
                       Text(
-                        "${character.status} - ${character.species}",
-                        style: CharacterTextStyle.characterStatus,
+                        character.name,
+                        style: CharacterTextStyle.characterName,
                         overflow: TextOverflow.ellipsis,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            height: 10,
+                            width: 10,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.colorStatus(character.status)),
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            "${character.status} - ${character.species}",
+                            style: CharacterTextStyle.characterStatus,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

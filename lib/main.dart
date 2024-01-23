@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
-import 'package:rick_and_morty/pages/home_page.dart';
+import 'package:rick_and_morty/pages/splash_page.dart';
 import 'package:rick_and_morty/services/repository.dart';
 import 'package:rick_and_morty/utils/theme.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Rick And Morty',
         theme: CharacterTheme.dark,
-        home: const HomePage(),
+        home: const SplashPage(),
       ),
     );
   }
