@@ -13,29 +13,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final List<CharacterModel> _character = [];
-  // final ScrollController _scrollController = ScrollController();
-  //
-  // @override
-  // void initState() {
-  //   _onScroll();
-  //   super.initState();
-  // }
-  //
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _scrollController.dispose();
-  // }
-  //
-  // void _onScroll() {
-  //   _scrollController.addListener(() async {
-  //     if (_scrollController.position.maxScrollExtent ==
-  //             _scrollController.offset &&
-  //         !context.read<CharactersCubit>().isLoading) {
-  //       context.read<CharactersCubit>().loadingAllCharacters();
-  //     }
-  //   });
-  // }
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,25 +37,42 @@ class _HomePageState extends State<HomePage> {
               )),
         ],
       ),
-      body: LayoutBuilder(builder: (context, constraints) {
-        return BlocBuilder<CharactersBloc, CharactersState>(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return BlocBuilder<CharactersBloc, CharactersState>(
             builder: (context, state) {
-          if (state is InitialState || state is LoadingState) {
-            return const Center(
-                child: CircularProgressIndicator(color: AppColors.green));
-          } else if (state is ErrorState) {
-            return const Center(
-                child: Icon(Icons.warning_amber_outlined, color: Colors.red));
-          } else if (state is SuccessState) {
-            _character.addAll(state.characters);
-          }
-          return ListView.builder(
-              itemCount: _character.length,
-              itemBuilder: (context, index) {
-                return Text(_character[index].name);
-              });
-        });
-      }),
+              if (state is InitialState ||
+                  state is LoadingState && _character.isEmpty) {
+                return const Center(
+                    child: CircularProgressIndicator(color: AppColors.green));
+              } else if (state is ErrorState && _character.isEmpty) {
+                return const Center(
+                    child:
+                        Icon(Icons.warning_amber_outlined, color: Colors.red));
+              } else if (state is SuccessState) {
+                _character.addAll(state.characters);
+              }
+              return ListView.separated(
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
+                controller: _scrollController
+                  ..addListener(() async {
+                    if (_scrollController.position.pixels ==
+                            _scrollController.position.maxScrollExtent &&
+                        !BlocProvider.of<CharactersBloc>(context).isFetching) {
+                      BlocProvider.of<CharactersBloc>(context)
+                          .add(LoadingCharactersEvent());
+                    }
+                  }),
+                itemCount: _character.length,
+                itemBuilder: (context, index) {
+                  return Text("${index.toString()} ${_character[index].name}");
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

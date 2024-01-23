@@ -10,16 +10,22 @@ part 'characters_state.dart';
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   final Repository repository;
   List<CharacterModel> characterList = [];
+  bool isFetching = false;
+  int page = 1;
 
   CharactersBloc({required this.repository}) : super(InitialState()) {
     on<LoadingCharactersEvent>((event, emit) async {
       emit(LoadingState());
+      isFetching = true;
       print("carregando");
 
       try {
-        characterList = await repository.loadingAllCharacters(page: 2);
+        characterList = await repository.loadingAllCharacters(page: page);
+        isFetching = false;
         emit(SuccessState(characters: characterList));
+        page++;
       } catch (e) {
+        isFetching = false;
         emit(ErrorState(e.toString()));
       }
     });
