@@ -47,4 +47,10 @@ abstract class CharacterTextStyle {
     fontWeight: FontWeight.w700,
     fontFamily: 'Poppins',
   );
+
+  static const searchSuggestions = TextStyle(
+    color: Colors.white,
+    fontSize: 18,
+    fontFamily: 'Poppins',
+  );
 }

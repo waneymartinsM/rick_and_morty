@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/pages/home_page.dart';
 import 'package:rick_and_morty/utils/colors.dart';
+import 'package:rick_and_morty/utils/icons.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -43,9 +44,9 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           children: [
             RotationTransition(
               turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-              child: Image.asset('assets/images/portal.png', height: 300),
+              child: Image.asset(AppIcons.portal, height: 300),
             ),
-            Image.asset('assets/images/characters.png', height: 340),
+            Image.asset(AppIcons.rickAndMorty, height: 340),
           ],
         ),
       ),
