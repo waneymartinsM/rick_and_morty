@@ -11,7 +11,7 @@ class CharacterSearch extends SearchDelegate {
           searchFieldLabel: 'Procure personagens pelo nome...',
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.search,
-          searchFieldStyle: CharacterTextStyle.titleAppBar,
+          searchFieldStyle: CharacterTextStyle.search,
         );
 
   @override
@@ -50,11 +50,6 @@ class CharacterSearch extends SearchDelegate {
               child: CircularProgressIndicator(color: AppColors.green));
         } else if (state is SearchLoaded) {
           final characters = state.characters;
-          // if (characters.isEmpty) {
-          //   return const Center(child: Text("Nenhum resultado encontrado!"));
-          // } else if (state is SearchError) {
-          //   return const Center(child: Text("Ocorreu um erro!"));
-          // }
           return ListView.builder(
               itemBuilder: (BuildContext context, int index) =>
                   CharacterCard(character: characters[index]));

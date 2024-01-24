@@ -42,9 +42,10 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           alignment: Alignment.center,
           children: [
             RotationTransition(
-              turns: Tween(begin: 0.0, end: 1.7).animate(_controller),
+              turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
               child: Image.asset('assets/images/portal.png', height: 300),
             ),
+            Image.asset('assets/images/characters.png', height: 340),
           ],
         ),
       ),

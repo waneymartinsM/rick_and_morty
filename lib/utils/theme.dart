@@ -9,6 +9,7 @@ abstract class CharacterTheme {
       brightness: Brightness.dark,
       scaffoldBackgroundColor: AppColors.body,
       splashColor: AppColors.body,
+      hintColor: AppColors.body.withOpacity(0.4),
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         iconTheme: IconThemeData(color: AppColors.body1),

@@ -24,7 +24,7 @@ abstract class CharacterTextStyle {
 
   static const informationTitleRow = TextStyle(
     fontSize: 18,
-    color: Colors.white,
+    color: Colors.grey,
     fontFamily: 'Poppins',
   );
 
@@ -37,6 +37,13 @@ abstract class CharacterTextStyle {
   static const titleAppBar = TextStyle(
     color: AppColors.green,
     fontSize: 22,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins',
+  );
+
+  static const search = TextStyle(
+    color: AppColors.body,
+    fontSize: 18,
     fontWeight: FontWeight.w700,
     fontFamily: 'Poppins',
   );
