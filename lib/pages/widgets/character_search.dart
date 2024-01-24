@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/search/search_bloc.dart';
 import 'package:rick_and_morty/pages/widgets/character_card.dart';
+import 'package:rick_and_morty/pages/widgets/error_message.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 import 'package:rick_and_morty/utils/icons.dart';
 import 'package:rick_and_morty/utils/text_styles.dart';
@@ -68,15 +69,8 @@ class CharacterSearch extends SearchDelegate {
               itemBuilder: (BuildContext context, int index) =>
                   CharacterCard(character: characters[index]));
         } else if (state is SearchError) {
-          return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(AppIcons.notFound, height: 70),
-                  const Text("Nenhum resultado encontrado!",
-                      style: TextStyle(color: Colors.white)),
-                ],
-              ));
+          return const CharacterErrorMessage(
+              message: "Nenhum resultado encontrado!");
         }
         return const Center();
       },
@@ -88,18 +82,20 @@ class CharacterSearch extends SearchDelegate {
     final suggestions = query.isEmpty ? characters : [];
 
     return ListView.builder(
-      itemCount: suggestions.length,
-        itemBuilder: (context, index){
-        final suggestion = suggestions[index];
-        return ListTile(
-          onTap: (){
-            query = suggestion;
-            showResults(context);
-          },
-          leading: Image.asset(AppIcons().getIcon(suggestion), height: 40),
-          title: RichText(text: TextSpan(text: suggestion, style: CharacterTextStyle.searchSuggestions)),
-        );
-        }
-    );
+        itemCount: suggestions.length,
+        itemBuilder: (context, index) {
+          final suggestion = suggestions[index];
+          return ListTile(
+            onTap: () {
+              query = suggestion;
+              showResults(context);
+            },
+            leading: Image.asset(AppIcons().getIcon(suggestion), height: 40),
+            title: RichText(
+                text: TextSpan(
+                    text: suggestion,
+                    style: CharacterTextStyle.searchSuggestions)),
+          );
+        });
   }
 }

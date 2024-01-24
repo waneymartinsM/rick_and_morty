@@ -42,7 +42,7 @@ abstract class CharacterTextStyle {
   );
 
   static const search = TextStyle(
-    color: AppColors.body,
+    color: AppColors.green,
     fontSize: 18,
     fontWeight: FontWeight.w700,
     fontFamily: 'Poppins',
