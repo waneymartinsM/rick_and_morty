@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/utils/colors.dart';
 
 abstract class CharacterTextStyle {
   static const characterName = TextStyle(
@@ -30,5 +31,13 @@ abstract class CharacterTextStyle {
   static const informationTextRow = TextStyle(
     fontSize: 18,
     color: Colors.white,
+    fontFamily: 'Poppins',
+  );
+
+  static const titleAppBar = TextStyle(
+    color: AppColors.green,
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins',
   );
 }

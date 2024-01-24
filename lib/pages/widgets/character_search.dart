@@ -3,13 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/search/search_bloc.dart';
 import 'package:rick_and_morty/pages/widgets/character_card.dart';
 import 'package:rick_and_morty/utils/colors.dart';
+import 'package:rick_and_morty/utils/text_styles.dart';
 
 class CharacterSearch extends SearchDelegate {
-  CharacterSearch({required String hintText})
+  CharacterSearch()
       : super(
-          searchFieldLabel: hintText,
+          searchFieldLabel: 'Procure personagens pelo nome...',
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.search,
+          searchFieldStyle: CharacterTextStyle.titleAppBar,
         );
 
   @override
@@ -43,19 +45,23 @@ class CharacterSearch extends SearchDelegate {
         .add(Search(query: query));
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (BuildContext context, state) {
-        if (state is SearchUninitialized) {
+        if (state is SearchLoading) {
           return const Center(
               child: CircularProgressIndicator(color: AppColors.green));
         } else if (state is SearchLoaded) {
           final characters = state.characters;
-          if (characters.isEmpty) {
-            return const Center(child: Text("Nenhum resultado encontrado!"));
-          } else if (state is SearchError) {
-            return const Center(child: Text("Ocorreu um erro!"));
-          }
+          // if (characters.isEmpty) {
+          //   return const Center(child: Text("Nenhum resultado encontrado!"));
+          // } else if (state is SearchError) {
+          //   return const Center(child: Text("Ocorreu um erro!"));
+          // }
           return ListView.builder(
               itemBuilder: (BuildContext context, int index) =>
                   CharacterCard(character: characters[index]));
+        } else if (state is SearchError) {
+          return const Center(
+              child: Text("Nenhum resultado encontrado!",
+                  style: TextStyle(color: Colors.white)));
         }
         return const Center();
       },

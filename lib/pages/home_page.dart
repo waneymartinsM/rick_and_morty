@@ -43,9 +43,7 @@ class _HomePageState extends State<HomePage> {
   IconButton _buildSearch() {
     return IconButton(
         onPressed: () {
-          showSearch(
-              context: context,
-              delegate: CharacterSearch(hintText: "name character"));
+          showSearch(context: context, delegate: CharacterSearch());
         },
         padding: const EdgeInsets.only(right: 20),
         icon: const Icon(Icons.search_rounded, size: 25));

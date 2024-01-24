@@ -38,17 +38,14 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: AppColors.body,
       body: Center(
-        child: RotationTransition(
-          turns: Tween(begin: 0.0, end: 2.0).animate(_controller),
-          child: Container(
-            height: 280,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/portal.png"),
-                fit: BoxFit.fitHeight,
-              ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            RotationTransition(
+              turns: Tween(begin: 0.0, end: 1.7).animate(_controller),
+              child: Image.asset('assets/images/portal.png', height: 300),
             ),
-          ),
+          ],
         ),
       ),
     );

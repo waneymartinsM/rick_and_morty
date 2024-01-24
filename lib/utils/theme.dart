@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/utils/colors.dart';
+import 'package:rick_and_morty/utils/text_styles.dart';
 
 abstract class CharacterTheme {
   static ThemeData get dark => ThemeData(
@@ -13,11 +14,6 @@ abstract class CharacterTheme {
         iconTheme: IconThemeData(color: AppColors.body1),
         backgroundColor: AppColors.body,
         elevation: 0,
-        titleTextStyle: TextStyle(
-          color: AppColors.green,
-          fontSize: 22,
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w700,
-        ),
+        titleTextStyle: CharacterTextStyle.titleAppBar,
       ));
 }
