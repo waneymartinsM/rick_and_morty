@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:rick_and_morty/models/location_model.dart';
 
 class CharacterModel {
@@ -44,7 +46,12 @@ class CharacterModel {
         created: DateTime.parse(json["created"]),
       );
 
-  Map<String, dynamic> toJson() => {
+  factory CharacterModel.toString(String str) =>
+      CharacterModel.fromJson(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  Map<String, dynamic> toMap() => {
         "id": id,
         "name": name,
         "status": status,
