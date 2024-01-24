@@ -1,16 +1,19 @@
-# rick_and_morty
+# 🥒 Rick and Morty
 
-A new Flutter project.
+## Sobre o projeto
 
-## Getting Started
+O Aplicativo consome a API [The Rick and Morty API
+](https://rickandmortyapi.com) e retorna uma lista de personagens com informações sobre eles.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Layout
+<p>
+<img src="screenshots/Screenshot_Home_Page.png" width="22%">
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Tecnologias utilizadas
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Flutter
+* The Rick and Morty API
+* Bloc
+* Cached Network Image

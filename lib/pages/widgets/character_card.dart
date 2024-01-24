@@ -15,7 +15,10 @@ class CharacterCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: const BorderRadius.horizontal(
+          left: Radius.circular(100),
+          right: Radius.circular(90),
+        ),
         child: Material(
           child: InkWell(
             onTap: () {
@@ -31,11 +34,7 @@ class CharacterCard extends StatelessWidget {
               color: AppColors.body1,
               child: Row(
                 children: [
-                  Container(
-                    color: AppColors.body1,
-                    child:
-                        CharacterImage(character: character, size: 100),
-                  ),
+                  CharacterImage(character: character, size: 100),
                   const SizedBox(width: 20),
                   CharacterCardData(character: character),
                 ],

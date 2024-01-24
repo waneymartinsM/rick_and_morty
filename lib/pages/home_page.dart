@@ -34,14 +34,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("Rick and Morty"),
-            const SizedBox(height: 10),
-            _buildSearch(),
-          ],
-        ),
+        // title: Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     const Text("Rick and Morty"),
+        //     const SizedBox(height: 10),
+        //     _buildSearch(),
+        //   ],
+        // ),
+        title: const Text("Rick and Morty"),
+        actions: [_buildSearch()],
       ),
       body: _buildBody(),
     );
@@ -66,7 +68,8 @@ class _HomePageState extends State<HomePage> {
               return const Center(
                   child: CircularProgressIndicator(color: AppColors.green));
             } else if (state is ErrorState && character.isEmpty) {
-              return const CharacterErrorMessage(message: "Erro ao carregar personagens...");
+              return const CharacterErrorMessage(
+                  message: "Erro ao carregar personagens...");
             } else if (state is SuccessState) {
               character.addAll(state.characters);
             }

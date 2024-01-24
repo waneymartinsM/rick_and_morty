@@ -15,13 +15,17 @@ class CharacterImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      fit: BoxFit.cover,
-      height: size,
-      placeholder: (context, url) => const Align(
-          alignment: Alignment.centerRight,
-          child: CircularProgressIndicator(color: AppColors.green)),
-      imageUrl: character.image,
+    return Hero(
+      tag: character.id,
+      child: ClipOval(
+        child: CachedNetworkImage(
+          fit: BoxFit.fitHeight,
+          height: size,
+          placeholder: (context, url) => const Center(
+              child: CircularProgressIndicator(color: AppColors.green)),
+          imageUrl: character.image,
+        ),
+      ),
     );
   }
 }
