@@ -70,11 +70,11 @@ class DetailPage extends StatelessWidget {
                           ),
                           _informationRow(
                             label: 'Origem:',
-                            value: character.origin.name,
+                            value: 'character.origin.name',
                           ),
                           _informationRow(
                             label: 'Última localização conhecida:',
-                            value: character.location.name,
+                            value: 'character.location.name',
                           ),
                           _informationRow(
                             label: 'Número de episódios:',
