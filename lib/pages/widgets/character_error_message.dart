@@ -13,6 +13,7 @@ class CharacterErrorMessage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(AppIcons.notFound, height: 70),
+          const SizedBox(height: 10),
           Text(message, style: const TextStyle(color: Colors.white)),
         ],
       ),

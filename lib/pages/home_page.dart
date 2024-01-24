@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
 import 'package:rick_and_morty/models/character_model.dart';
 import 'package:rick_and_morty/pages/widgets/character_card.dart';
+import 'package:rick_and_morty/pages/widgets/character_error_message.dart';
 import 'package:rick_and_morty/pages/widgets/character_search.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 
@@ -33,8 +34,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Rick and Morty"),
-        actions: [_buildSearch()],
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Rick and Morty"),
+            const SizedBox(height: 10),
+            _buildSearch(),
+          ],
+        ),
       ),
       body: _buildBody(),
     );
@@ -59,8 +66,7 @@ class _HomePageState extends State<HomePage> {
               return const Center(
                   child: CircularProgressIndicator(color: AppColors.green));
             } else if (state is ErrorState && character.isEmpty) {
-              return const Center(
-                  child: Icon(Icons.warning_amber_outlined, color: Colors.red));
+              return const CharacterErrorMessage(message: "Erro ao carregar personagens...");
             } else if (state is SuccessState) {
               character.addAll(state.characters);
             }
