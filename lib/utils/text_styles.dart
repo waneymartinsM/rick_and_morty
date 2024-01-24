@@ -21,9 +21,14 @@ abstract class CharacterTextStyle {
     fontFamily: 'Poppins',
   );
 
-  static const characterTextDetail = TextStyle(
-    fontSize: 15,
+  static const informationTitleRow = TextStyle(
+    fontSize: 18,
     color: Colors.white,
     fontFamily: 'Poppins',
+  );
+
+  static const informationTextRow = TextStyle(
+    fontSize: 18,
+    color: Colors.white,
   );
 }

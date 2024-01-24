@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..repeat();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(

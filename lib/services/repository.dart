@@ -9,7 +9,7 @@ class Repository extends RepositoryInterface {
   Repository(this.dio);
 
   @override
-  Future<List<CharacterModel>> loadingAllCharacters({required int page}) async {
+  Future<List<CharacterModel>> getCharacters({required int page}) async {
     try {
       Response response = await dio.get('$_api/api/character/?page=$page');
       final data = response.data;
@@ -18,9 +18,24 @@ class Repository extends RepositoryInterface {
           .map<CharacterModel>(
               (characters) => CharacterModel.fromJson(characters))
           .toList();
-
-      print("response: $characters");
       return characters;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<CharacterModel>> searchCharacter({required String query}) async {
+    try {
+      Response response = await dio.get('$_api/api/character/?name=$query');
+      final data = response.data;
+
+      List<CharacterModel> character = data['results']
+          .map<CharacterModel>(
+              (characters) => CharacterModel.fromJson(characters))
+          .toList();
+
+      return character;
     } catch (e) {
       rethrow;
     }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
 import 'package:rick_and_morty/models/character_model.dart';
-import 'package:rick_and_morty/pages/character_detail_page.dart';
+import 'package:rick_and_morty/pages/widgets/character_card.dart';
+import 'package:rick_and_morty/pages/widgets/character_search.dart';
 import 'package:rick_and_morty/utils/colors.dart';
-import 'package:rick_and_morty/utils/text_styles.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -42,13 +42,13 @@ class _HomePageState extends State<HomePage> {
 
   IconButton _buildSearch() {
     return IconButton(
-        onPressed: () {},
+        onPressed: () {
+          showSearch(
+              context: context,
+              delegate: CharacterSearch(hintText: "name character"));
+        },
         padding: const EdgeInsets.only(right: 20),
-        icon: const Icon(
-          Icons.search_rounded,
-          size: 25,
-          color: AppColors.body1,
-        ));
+        icon: const Icon(Icons.search_rounded, size: 25));
   }
 
   LayoutBuilder _buildBody() {
@@ -66,88 +66,24 @@ class _HomePageState extends State<HomePage> {
             } else if (state is SuccessState) {
               character.addAll(state.characters);
             }
-            return _buildListCharacters();
+            return ListView.builder(
+              controller: _scrollController
+                ..addListener(() async {
+                  if (_scrollController.position.pixels ==
+                          _scrollController.position.maxScrollExtent &&
+                      !BlocProvider.of<CharactersBloc>(context).isFetching) {
+                    BlocProvider.of<CharactersBloc>(context)
+                        .add(LoadingCharactersEvent());
+                  }
+                }),
+              itemCount: character.length,
+              itemBuilder: (context, index) {
+                return CharacterCard(character: character[index]);
+              },
+            );
           },
         );
       },
-    );
-  }
-
-  Widget _buildListCharacters() {
-    return ListView.builder(
-      controller: _scrollController
-        ..addListener(() async {
-          if (_scrollController.position.pixels ==
-                  _scrollController.position.maxScrollExtent &&
-              !BlocProvider.of<CharactersBloc>(context).isFetching) {
-            BlocProvider.of<CharactersBloc>(context)
-                .add(LoadingCharactersEvent());
-          }
-        }),
-      itemCount: character.length,
-      itemBuilder: (context, index) {
-        return _cardCharacter(character: character[index]);
-      },
-    );
-  }
-
-  Widget _cardCharacter({required final CharacterModel character}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Material(
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          CharacterDetailPage(character: character)));
-            },
-            splashColor: AppColors.body1.withOpacity(0.1),
-            child: Ink(
-              height: 100,
-              width: double.infinity,
-              color: AppColors.body1,
-              child: Row(
-                children: [
-                  Image.network(character.image, fit: BoxFit.cover),
-                  const SizedBox(width: 25),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        character.name,
-                        style: CharacterTextStyle.characterName,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColors.colorStatus(character.status)),
-                          ),
-                          const SizedBox(width: 5),
-                          Text(
-                            "${character.status} - ${character.species}",
-                            style: CharacterTextStyle.characterStatus,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

@@ -20,7 +20,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       print("carregando");
 
       try {
-        characterList = await repository.loadingAllCharacters(page: page);
+        characterList = await repository.getCharacters(page: page);
         isFetching = false;
         emit(SuccessState(characters: characterList));
         page++;
