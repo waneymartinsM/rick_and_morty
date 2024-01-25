@@ -41,13 +41,17 @@ class CharacterCard extends StatelessWidget {
                   CharacterCardData(character: character),
                   BlocBuilder<FavoriteBloc, FavoriteState>(
                       builder: (context, state) {
+                    final containsCharacter =
+                        state.favorite.contains(character);
                     return IconButton(
                       onPressed: () {
                         context
                             .read<FavoriteBloc>()
-                            .add(AddFavoriteListCharacter(character));
+                            .add(ToggleFavorites(character));
                       },
-                      icon: const Icon(Icons.favorite_border_outlined),
+                      icon: Icon(containsCharacter
+                          ? Icons.favorite_outlined
+                          : Icons.favorite_border_outlined),
                       iconSize: 25,
                     );
                   }),

@@ -7,25 +7,19 @@ part 'favorite_state.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteBloc() : super(const FavoriteState()) {
-    on<AddFavoriteListCharacter>(_onAddFavoriteListCharacter);
-    on<RemoveFavoriteListCharacter>(_onRemoveFavoriteListCharacter);
+    on<ToggleFavorites>(_onToggleFavorites);
   }
 
-  void _onAddFavoriteListCharacter(
-      AddFavoriteListCharacter event, Emitter<FavoriteState> emit) async {
+  void _onToggleFavorites(
+      ToggleFavorites event, Emitter<FavoriteState> emit) async {
     final state = this.state;
 
     if (state.favorite.contains(event.character) == false) {
       emit(FavoriteState(
           favorite: List.from(state.favorite)..add(event.character)));
+    } else {
+      emit(FavoriteState(
+          favorite: List.from(state.favorite)..remove(event.character)));
     }
-  }
-
-  void _onRemoveFavoriteListCharacter(
-      RemoveFavoriteListCharacter event, Emitter<FavoriteState> emit) {
-    final state = this.state;
-
-    emit(FavoriteState(
-        favorite: List.from(state.favorite)..remove(event.character)));
   }
 }
