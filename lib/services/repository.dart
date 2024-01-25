@@ -43,31 +43,31 @@ class Repository extends RepositoryInterface {
     }
   }
 
-  @override
-  Future<void> saveFavoritesCharacters(
-      {required CharacterModel character}) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var characterList = prefs.getStringList(PreferencesKeys.favoritesKey);
-
-    if (characterList == null || characterList.isEmpty) {
-      prefs.setStringList(PreferencesKeys.favoritesKey, [character.toJson()]);
-    } else {
-      characterList.add(character.toJson());
-      prefs.setStringList(PreferencesKeys.favoritesKey, characterList);
-    }
-  }
-
-  @override
-  Future<List<CharacterModel>> getFavoritesCharacters() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var characterList = prefs.getStringList(PreferencesKeys.favoritesKey);
-
-    if (characterList == null) {
-      return [];
-    }
-
-    return characterList
-        .map<CharacterModel>((json) => CharacterModel.toString(json))
-        .toList();
-  }
+  // @override
+  // Future<void> saveFavoritesCharacters(
+  //     {required CharacterModel character}) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   var characterList = prefs.getStringList(PreferencesKeys.favoritesKey);
+  //
+  //   if (characterList == null || characterList.isEmpty) {
+  //     prefs.setStringList(PreferencesKeys.favoritesKey, [character.toJson()]);
+  //   } else {
+  //     characterList.add(character.toJson());
+  //     prefs.setStringList(PreferencesKeys.favoritesKey, characterList);
+  //   }
+  // }
+  //
+  // @override
+  // Future<List<CharacterModel>> getFavoritesCharacters() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   var characterList = prefs.getStringList(PreferencesKeys.favoritesKey);
+  //
+  //   if (characterList == null) {
+  //     return [];
+  //   }
+  //
+  //   return characterList
+  //       .map<CharacterModel>((json) => CharacterModel.toString(json))
+  //       .toList();
+  // }
 }

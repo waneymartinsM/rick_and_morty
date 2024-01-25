@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
+import 'package:rick_and_morty/bloc/favorite/favorite_bloc.dart';
 import 'package:rick_and_morty/bloc/search/search_bloc.dart';
 import 'package:rick_and_morty/pages/splash_page.dart';
 import 'package:rick_and_morty/services/repository.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (_) => CharactersBloc(repository: repository)
               ..add(LoadingCharactersEvent())),
+        BlocProvider<FavoriteBloc>(create: (_) => FavoriteBloc()),
         BlocProvider<SearchBloc>(
             create: (_) => SearchBloc(repository: repository)),
       ],
