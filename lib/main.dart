@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final repository = Repository(Dio());
+    final repository = Repository();
 
     return MultiBlocProvider(
       providers: [
