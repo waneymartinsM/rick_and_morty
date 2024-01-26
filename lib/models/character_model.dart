@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:rick_and_morty/models/location_model.dart';
 
-class CharacterModel {
-  CharacterModel({
+class CharacterModel extends Equatable {
+  const CharacterModel({
     required this.id,
     required this.name,
     required this.status,
@@ -65,4 +66,20 @@ class CharacterModel {
         "url": url,
         "created": created.toIso8601String(),
       };
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        status,
+        species,
+        type,
+        gender,
+        origin,
+        location,
+        image,
+        episode,
+        url,
+        created,
+      ];
 }
