@@ -52,7 +52,10 @@ class CharacterCard extends StatelessWidget {
                       icon: Icon(containsCharacter
                           ? Icons.favorite_outlined
                           : Icons.favorite_border_outlined),
-                      iconSize: 25,
+                      iconSize: 24,
+                      color: containsCharacter
+                          ? AppColors.deadColor
+                          : Colors.white,
                     );
                   }),
                 ],

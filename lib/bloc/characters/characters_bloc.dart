@@ -17,7 +17,6 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
     on<LoadingCharactersEvent>((event, emit) async {
       emit(LoadingState());
       isFetching = true;
-      print("carregando");
 
       try {
         characterList = await repository.getCharacters(page: page);

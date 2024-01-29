@@ -7,6 +7,7 @@ class AppColors {
   static const Color green = Color(0xff97ce4c);
   static const Color aliveColor = Color(0xff617734);
   static const Color deadColor = Color(0xffe85356);
+  static const Color lightPink =Color(0xffe89ac7);
 
   static colorStatus(String status) {
     return status == 'Alive'

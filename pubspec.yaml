@@ -31,7 +31,9 @@ flutter:
     - assets/images/rick_and_morty.png
     - assets/images/morty_not_found.png
     - assets/images/icons/morty_smith.png
+    - assets/images/icons/morty_bottom.png
     - assets/images/icons/rick_sanchez.png
+    - assets/images/icons/rick_bottom.png
     - assets/images/icons/beth_smith.png
     - assets/images/icons/jerry_smith.png
     - assets/images/icons/summer_smith.png

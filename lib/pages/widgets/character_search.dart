@@ -41,7 +41,7 @@ class CharacterSearch extends SearchDelegate {
               showSuggestions(context);
             }
           },
-          icon: const Icon(Icons.clear)),
+          icon: const Icon(Icons.clear, size: 25)),
     ];
   }
 
@@ -51,7 +51,7 @@ class CharacterSearch extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: const Icon(Icons.arrow_back_ios));
+        icon: const Icon(Icons.arrow_back_ios, size: 25));
   }
 
   @override
@@ -94,7 +94,8 @@ class CharacterSearch extends SearchDelegate {
             title: RichText(
                 text: TextSpan(
                     text: suggestion,
-                    style: CharacterTextStyle.searchSuggestions)),
+                    style: CharacterTextStyle.searchSuggestions,
+                )),
           );
         });
   }
