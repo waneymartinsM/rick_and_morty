@@ -8,7 +8,7 @@ O Aplicativo consome a API [The Rick and Morty API
 
 ## Layout
 <p>
-<img src="screenshots/Screenshot_Home_Page.png" width="22%">
+<img src="screenshots/Screenshot_Home_Page.png" width="30%">
 </p>
 
 ### Tecnologias utilizadas
