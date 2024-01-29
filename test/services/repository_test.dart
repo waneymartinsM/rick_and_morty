@@ -25,7 +25,8 @@ void main() {
     group('getCharacters', () {
       const int page = 1;
 
-      test('should return list of CharacterModel on success', () async {
+      test('deve retornar a lista de CharacterModel em caso de sucesso',
+          () async {
         final characters = await repository.getCharacters(page: page);
 
         expect(characters, isInstanceOf<List<CharacterModel>>());
@@ -37,7 +38,8 @@ void main() {
     group('searchCharacter', () {
       const query = 'morty';
 
-      test('should return list of CharacterModel on success', () async {
+      test('deve retornar a lista de CharacterModel em caso de sucesso',
+          () async {
         final characters = await repository.searchCharacter(query: query);
 
         expect(characters, isInstanceOf<List<CharacterModel>>());
