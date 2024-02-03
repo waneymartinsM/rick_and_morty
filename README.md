@@ -27,6 +27,7 @@ O Aplicativo utiliza a API [The Rick and Morty API
 - Utilização da API de The Rick and Morty para acessar dados dos personagens
 - Bloc para gerenciamento de estado e lógica de negócios
 - Cached Network Image para o carregamento eficiente e o cache de imagens da rede
+- 
 ## Funcionalidades
 
 - Visualização de uma lista de personagens
