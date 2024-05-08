@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/pages/home_page.dart';
+import 'package:rick_and_morty/presentation/pages/home_page.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 import 'package:rick_and_morty/utils/icons.dart';
 

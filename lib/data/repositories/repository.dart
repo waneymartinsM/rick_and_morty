@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/services/adapters/character_adapter.dart';
+import 'package:rick_and_morty/data/adapters/character_adapter.dart';
 import 'package:rick_and_morty/services/repository_interface.dart';
 import 'package:rick_and_morty/utils/constants.dart';
 

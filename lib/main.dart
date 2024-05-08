@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/characters/characters_bloc.dart';
 import 'package:rick_and_morty/bloc/favorite/favorite_bloc.dart';
 import 'package:rick_and_morty/bloc/search/search_bloc.dart';
-import 'package:rick_and_morty/pages/splash_page.dart';
-import 'package:rick_and_morty/services/repository.dart';
+import 'package:rick_and_morty/data/repositories/repository.dart';
+import 'package:rick_and_morty/presentation/pages/splash_page.dart';
 import 'package:rick_and_morty/utils/theme.dart';
 
 void main() {

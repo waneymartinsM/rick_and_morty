@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/services/repository.dart';
+import 'package:rick_and_morty/data/repositories/repository.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockDio extends Mock implements Dio {}

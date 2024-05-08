@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/pages/widgets/character_status_circle.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_status_circle.dart';
 import 'package:rick_and_morty/utils/text_styles.dart';
 
 class CharacterCardData extends StatelessWidget {

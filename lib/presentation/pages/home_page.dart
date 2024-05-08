@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/pages/card_page.dart';
-import 'package:rick_and_morty/pages/favorite_page.dart';
-import 'package:rick_and_morty/pages/widgets/character_search.dart';
+import 'package:rick_and_morty/presentation/pages/card_page.dart';
+import 'package:rick_and_morty/presentation/pages/favorite_page.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_search.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 
 class HomePage extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/services/repository.dart';
+import 'package:rick_and_morty/data/repositories/repository.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';

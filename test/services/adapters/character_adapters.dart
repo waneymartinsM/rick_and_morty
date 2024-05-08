@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/services/adapters/character_adapter.dart';
+import 'package:rick_and_morty/data/adapters/character_adapter.dart';
 
 void main() {
   group('Adapters Character', () {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/favorite/favorite_bloc.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/pages/widgets/character_card.dart';
-import 'package:rick_and_morty/pages/widgets/character_error_message.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_card.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_error_message.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});

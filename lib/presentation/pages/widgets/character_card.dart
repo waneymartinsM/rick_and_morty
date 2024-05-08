@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/favorite/favorite_bloc.dart';
 import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
-import 'package:rick_and_morty/pages/detail_page.dart';
-import 'package:rick_and_morty/pages/widgets/character_card_data.dart';
-import 'package:rick_and_morty/pages/widgets/character_image.dart';
+import 'package:rick_and_morty/presentation/pages/detail_page.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_card_data.dart';
+import 'package:rick_and_morty/presentation/pages/widgets/character_image.dart';
 import 'package:rick_and_morty/utils/colors.dart';
 
 class CharacterCard extends StatelessWidget {
