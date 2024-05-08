@@ -8,7 +8,7 @@ abstract class FavoriteEvent extends Equatable {
 }
 
 class ToggleFavorites extends FavoriteEvent {
-  final CharacterModel character;
+  final CharacterDto character;
 
   const ToggleFavorites(this.character);
 

@@ -16,7 +16,7 @@ class SearchLoading extends SearchState {
 class SearchLoaded extends SearchState {
   SearchLoaded({required this.characters});
 
-  final List<CharacterModel> characters;
+  final List<CharacterDto> characters;
 
   @override
   List<Object> get props => [characters];

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 import 'package:rick_and_morty/services/adapters/character_adapter.dart';
 import 'package:rick_and_morty/services/repository_interface.dart';
 import 'package:rick_and_morty/utils/constants.dart';
@@ -10,7 +10,7 @@ class Repository extends RepositoryInterface {
   Repository(this.dio);
 
   @override
-  Future<List<CharacterModel>> getCharacters({required int page}) async {
+  Future<List<CharacterDto>> getCharacters({required int page}) async {
     try {
       Response response = await dio.get('$api/api/character/?page=$page');
       final data = response.data;
@@ -26,7 +26,7 @@ class Repository extends RepositoryInterface {
   }
 
   @override
-  Future<List<CharacterModel>> searchCharacter({required String query}) async {
+  Future<List<CharacterDto>> searchCharacter({required String query}) async {
     try {
       Response response = await dio.get('$api/api/character/?name=$query');
       final data = response.data;

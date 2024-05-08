@@ -14,7 +14,7 @@ class LoadingState extends CharactersState {
 }
 
 class SuccessState extends CharactersState {
-  final List<CharacterModel> characters;
+  final List<CharacterDto> characters;
 
   SuccessState({required this.characters});
 

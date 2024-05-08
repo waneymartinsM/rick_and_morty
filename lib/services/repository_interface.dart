@@ -1,6 +1,6 @@
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 
 abstract class RepositoryInterface {
-  Future<List<CharacterModel>> getCharacters({required int page});
-  Future<List<CharacterModel>> searchCharacter({required String query});
+  Future<List<CharacterDto>> getCharacters({required int page});
+  Future<List<CharacterDto>> searchCharacter({required String query});
 }

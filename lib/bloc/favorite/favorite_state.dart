@@ -1,9 +1,9 @@
 part of 'favorite_bloc.dart';
 
 class FavoriteState extends Equatable {
-  final List<CharacterModel> favorite;
+  final List<CharacterDto> favorite;
 
-  const FavoriteState({this.favorite = const <CharacterModel>[]});
+  const FavoriteState({this.favorite = const <CharacterDto>[]});
 
   @override
   List<Object> get props => [favorite];

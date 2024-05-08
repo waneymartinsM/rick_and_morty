@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 import 'package:rick_and_morty/pages/widgets/character_status_circle.dart';
 import 'package:rick_and_morty/utils/text_styles.dart';
 
 class CharacterCardData extends StatelessWidget {
   const CharacterCardData({super.key, required this.character});
-  final CharacterModel character;
+  final CharacterDto character;
 
   @override
   Widget build(BuildContext context) {

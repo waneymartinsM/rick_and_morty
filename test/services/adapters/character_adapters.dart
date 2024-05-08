@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 import 'package:rick_and_morty/services/adapters/character_adapter.dart';
 
 void main() {
@@ -33,9 +33,9 @@ void main() {
         ]
       };
 
-      final List<CharacterModel> characters =
+      final List<CharacterDto> characters =
           CharacterAdapter.fromJson(apiResponse);
-      final CharacterModel character = characters[0];
+      final CharacterDto character = characters[0];
 
       expect(character.name, 'Rick Sanchez');
       expect(character.status, 'Alive');

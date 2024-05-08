@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 import 'package:equatable/equatable.dart';
 
 part 'favorite_event.dart';

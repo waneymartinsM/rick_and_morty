@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:rick_and_morty/models/character_model.dart';
+import 'package:rick_and_morty/domain/models/dto/character_dto.dart';
 import 'package:rick_and_morty/services/repository.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -29,7 +29,7 @@ void main() {
           () async {
         final characters = await repository.getCharacters(page: page);
 
-        expect(characters, isInstanceOf<List<CharacterModel>>());
+        expect(characters, isInstanceOf<List<CharacterDto>>());
         expect(characters.length, equals(3));
         expect(characters[0].name, 'Rick Sanchez');
       });
@@ -42,7 +42,7 @@ void main() {
           () async {
         final characters = await repository.searchCharacter(query: query);
 
-        expect(characters, isInstanceOf<List<CharacterModel>>());
+        expect(characters, isInstanceOf<List<CharacterDto>>());
         expect(characters.length, 3);
         expect(characters[1].name, 'Morty Smith');
       });
