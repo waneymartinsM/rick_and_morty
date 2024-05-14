@@ -34,6 +34,7 @@ O Aplicativo utiliza a API [The Rick and Morty API
 - Acesso aos detalhes de cada personagem
 - Marcação e visualização de personagens favoritos
 - Pesquisa abrangente por todos os personagens
+- O projeto inclui uma cobertura abrangente de testes de unidade para garantir a estabilidade e a confiabilidade do código. Os testes de unidade são escritos usando o framework de teste padrão do Flutter, `flutter_test`, e são executados automaticamente durante o processo de integração contínua.
 
 
 ## Documentação
